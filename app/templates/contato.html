@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    {% include 'nav.html' %}
+    <div class="row mt-4">
+        <h3>Envio de Contatos</h3>
+    </div>
+
+    <form action="" method="post" class="row mt-4 p-4 rounded border shadow">
+        {{ form.csrf_token }}
+
+        <!-- Nome -->
+        <div class="mb-3">
+            {{ form.nome.label(class="form-label") }}
+            {{ form.nome(class="form-control" + (" is-invalid" if form.nome.errors else "")) }}
+            {% for error in form.nome.errors %}
+                <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <!-- E-mail -->
+        <div class="mb-3">
+            {{ form.email.label(class="form-label") }}
+            {{ form.email(class="form-control" + (" is-invalid" if form.email.errors else "")) }}
+            {% for error in form.email.errors %}
+                <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <!-- Assunto -->
+        <div class="mb-3">
+            {{ form.assunto.label(class="form-label") }}
+            {{ form.assunto(class="form-control" + (" is-invalid" if form.assunto.errors else "")) }}
+            {% for error in form.assunto.errors %}
+                <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <!-- Mensagem -->
+        <div class="mb-3">
+            {{ form.mensagem.label(class="form-label") }}
+            {{ form.mensagem(class="form-control" + (" is-invalid" if form.mensagem.errors else "")) }}
+            {% for error in form.mensagem.errors %}
+                <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <!-- Botão de Enviar -->
+        <div class="mb-3">
+            {{ form.btnSubmit(class="btn btn-primary col-12 mt-3") }}
+        </div>
+    </form>
+</div>
+
+{% endblock %}

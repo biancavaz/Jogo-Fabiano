@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    {% include 'nav.html' %}
+    <div class="row mt-4">
+        <h3>Envio de Contatos</h3>
+    </div>
+
+    <form action="" method="post" class="row mt-4 p-4 rounded border shadow">
+        {{ form.csrf_token }}
+
+        <!-- Nome -->
+        {{ form.nome.label() }}
+        {{ form.nome(class="form-control") }}
+        {% for error in form.nome.errors %}
+            <div class="text-danger small">{{ error }}</div>
+        {% endfor %}
+
+        <!-- Sobrenome -->
+        {{ form.sobrenome.label() }}
+        {{ form.sobrenome(class="form-control") }}
+        {% for error in form.sobrenome.errors %}
+            <div class="text-danger small">{{ error }}</div>
+        {% endfor %}
+
+        <!-- E-mail -->
+        {{ form.email.label() }}
+        {{ form.email(class="form-control") }}
+        {% for error in form.email.errors %}
+            <div class="text-danger small">{{ error }}</div>
+        {% endfor %}
+
+        <!-- Senha -->
+        {{ form.senha.label() }}
+        {{ form.senha(class="form-control") }}
+        {% for error in form.senha.errors %}
+            <div class="text-danger small">{{ error }}</div>
+        {% endfor %}
+
+        <!-- Confirmação de Senha -->
+        {{ form.confirmacao.label() }}
+        {{ form.confirmacao(class="form-control") }}
+        {% for error in form.confirmacao.errors %}
+            <div class="text-danger small">{{ error }}</div>
+        {% endfor %}
+
+        <!-- Botão -->
+        {{ form.btnSubmit(class="btn btn-primary col-12 mt-3") }}
+    </form>
+</div>
+
+{% endblock %}
